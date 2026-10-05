@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#f7f8fc">
+  <title>Japanese Flashcards · Lessons 1–78</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">JAPANESE FLASHCARDS</p>
+        <h1>Lessons 1–78</h1>
+      </div>
+      <label class="lesson-picker">
+        <span>Lesson</span>
+        <select id="lessonSelect" aria-label="Choose lesson">
+          <option value="all">All</option>
+        </select>
+      </label>
+    </header>
+
+    <section class="progress" aria-live="polite">
+      <div class="progress-row">
+        <span id="remainingText">0 remaining</span>
+        <span id="counterText">0 / 0</span>
+      </div>
+      <div class="progress-track"><div id="progressBar"></div></div>
+    </section>
+
+    <section class="stage" aria-label="Flashcard">
+      <div id="stack" class="card-stack"></div>
+      <div id="emptyState" class="empty-state hidden">
+        <div class="empty-icon">✓</div>
+        <h2>All done!</h2>
+        <p>You reviewed every card in this list.</p>
+        <button id="restartBtn" class="restart-btn">Start again</button>
+      </div>
+    </section>
+
+    <section class="actions" aria-label="Answer">
+      <button id="dontKnowBtn" class="answer-btn dont" type="button">
+        <span class="action-icon">×</span>
+        <span>Don't Know</span>
+      </button>
+      <button id="knewBtn" class="answer-btn knew" type="button">
+        <span>Knew</span>
+        <span class="action-icon">✓</span>
+      </button>
+    </section>
+
+    <p class="hint">Swipe left for Don't Know · swipe right for Knew</p>
+  </main>
+
+  <script src="lesson-data-1-78.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
