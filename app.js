@@ -13,8 +13,6 @@
   const stack = document.getElementById("stack");
   const emptyState = document.getElementById("emptyState");
   const lessonSelect = document.getElementById("lessonSelect");
-  const dontKnowBtn = document.getElementById("dontKnowBtn");
-  const knewBtn = document.getElementById("knewBtn");
   const restartBtn = document.getElementById("restartBtn");
   const knewReviewBtn = document.getElementById("knewReviewBtn");
   const dontReviewBtn = document.getElementById("dontReviewBtn");
@@ -190,8 +188,6 @@
     }, 250);
   }
 
-  dontKnowBtn.addEventListener("click", () => finishCard("dont", -1));
-  knewBtn.addEventListener("click", () => finishCard("knew", 1));
   restartBtn.addEventListener("click", resetList);
   function openReview(type) {
     reviewTitle.textContent = type === "knew" ? "Knew" : "Don't Know";
