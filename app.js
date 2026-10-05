@@ -89,11 +89,23 @@
       <span class="card-lesson">LESSON ${card.lesson}</span>
       <span class="swipe-label left">DON'T KNOW</span>
       <span class="swipe-label right">KNEW</span>
-      ${kanji ? `<div class="card-kanji">${kanji}</div>` : ""}
-      <div class="card-jp">${jp}</div>
-      ${furi && furi !== card.jp ? `<div class="card-reading">${furi}</div>` : ""}
-      <div class="card-en">${en}</div>
+      <div class="card-face card-front-face">
+        ${kanji ? `<div class="card-kanji">${kanji}</div>` : ""}
+        <div class="card-jp">${jp}</div>
+        ${furi && furi !== card.jp ? `<div class="card-reading">${furi}</div>` : ""}
+        <div class="flip-hint">Tap to see English</div>
+      </div>
+      <div class="card-face card-back-face">
+        <div class="back-label">ENGLISH</div>
+        <div class="card-en">${en}</div>
+        <div class="flip-hint">Tap to return</div>
+      </div>
     `;
+
+    el.addEventListener("click", (event) => {
+      if (drag || event.target.closest(".swipe-label")) return;
+      el.classList.toggle("flipped");
+    });
 
     if (front) attachDrag(el);
     return el;
