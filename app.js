@@ -16,6 +16,15 @@
   const dontKnowBtn = document.getElementById("dontKnowBtn");
   const knewBtn = document.getElementById("knewBtn");
   const restartBtn = document.getElementById("restartBtn");
+  const knewReviewBtn = document.getElementById("knewReviewBtn");
+  const dontReviewBtn = document.getElementById("dontReviewBtn");
+  const reviewPanel = document.getElementById("reviewPanel");
+  const reviewTitle = document.getElementById("reviewTitle");
+  const reviewCards = document.getElementById("reviewCards");
+  const reviewEmpty = document.getElementById("reviewEmpty");
+  const closeReviewBtn = document.getElementById("closeReviewBtn");
+  const knewCount = document.getElementById("knewCount");
+  const dontCount = document.getElementById("dontCount");
   const remainingText = document.getElementById("remainingText");
   const counterText = document.getElementById("counterText");
   const progressBar = document.getElementById("progressBar");
@@ -57,7 +66,7 @@
 
     remainingText.textContent = `${remaining} remaining`;
     counterText.textContent = `${Math.min(currentIndex + 1, cards.length)} / ${cards.length}`;
-    progressBar.style.width = cards.length ? `${Math.min((currentIndex / cards.length) * 100, 100)}%` : "0%";
+    progressBar.style.width = cards.length ? `${Math.min((currentIndex / cards.length) * 100, 100)}%` : "0%";\n    knewCount.textContent = saved.knew.size;\n    dontCount.textContent = saved.dont.size;
 
     if (!remaining) {
       stack.classList.add("hidden");
@@ -182,6 +191,23 @@
   dontKnowBtn.addEventListener("click", () => finishCard("dont", -1));
   knewBtn.addEventListener("click", () => finishCard("knew", 1));
   restartBtn.addEventListener("click", resetList);
+  function openReview(type) {
+    reviewTitle.textContent = type === "knew" ? "Knew" : "Don't Know";
+    const ids = saved[type];
+    const items = allCards.filter(card => ids.has(card.id));
+    reviewCards.innerHTML = items.map(card => {
+      const kanji = card.kanji ? `<div class="review-kanji">${escapeHtml(card.kanji)}</div>` : "";
+      const jp = escapeHtml(card.jp || "");
+      const furi = escapeHtml(card.furi || "");
+      const en = escapeHtml(card.en || "");
+      return `<article class="review-card"><small>LESSON ${card.lesson}</small>${kanji}<div class="review-jp">${jp}</div>${furi && furi !== card.jp ? `<div class="review-reading">${furi}</div>` : ""}<div class="review-en">${en}</div></article>`;
+    }).join("");
+    reviewEmpty.classList.toggle("hidden", items.length > 0);
+    reviewPanel.classList.remove("hidden");
+  }
+  knewReviewBtn.addEventListener("click", () => openReview("knew"));
+  dontReviewBtn.addEventListener("click", () => openReview("dont"));
+  closeReviewBtn.addEventListener("click", () => reviewPanel.classList.add("hidden"));
   lessonSelect.addEventListener("change", e => chooseLesson(e.target.value));
 
   document.addEventListener("pointermove", moveDrag, { passive: false });
