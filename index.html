@@ -1,60 +1,22 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-  <meta name="theme-color" content="#f7f8fc">
-  <title>Japanese Flashcards · Lessons 1–78</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#f7f8fc">
+<title>Japanese Flashcards · Lessons 1–78</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="app">
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">JAPANESE FLASHCARDS</p>
-        <h1>Lessons 1–78</h1>
-      </div>
-      <label class="lesson-picker">
-        <span>Lesson</span>
-        <select id="lessonSelect" aria-label="Choose lesson">
-          <option value="all">All</option>
-        </select>
-      </label>
-    </header>
-
-    <section class="progress" aria-live="polite">
-      <div class="progress-row">
-        <span id="remainingText">0 remaining</span>
-        <span id="counterText">0 / 0</span>
-      </div>
-      <div class="progress-track"><div id="progressBar"></div></div>
-    </section>
-
-    <section class="stage" aria-label="Flashcard">
-      <div id="stack" class="card-stack"></div>
-      <div id="emptyState" class="empty-state hidden">
-        <div class="empty-icon">✓</div>
-        <h2>All done!</h2>
-        <p>You reviewed every card in this list.</p>
-        <button id="restartBtn" class="restart-btn">Start again</button>
-      </div>
-    </section>
-
-    <section class="actions" aria-label="Answer">
-      <button id="dontKnowBtn" class="answer-btn dont" type="button">
-        <span class="action-icon">×</span>
-        <span>Don't Know</span>
-      </button>
-      <button id="knewBtn" class="answer-btn knew" type="button">
-        <span>Knew</span>
-        <span class="action-icon">✓</span>
-      </button>
-    </section>
-
-    <p class="hint">Swipe left for Don't Know · swipe right for Knew</p>
-  </main>
-
-  <script src="lesson-data-1-78.js"></script>
-  <script src="app.js"></script>
+<main class="app">
+<header class="topbar"><div><p class="eyebrow">JAPANESE FLASHCARDS</p><h1>Lessons 1–78</h1></div><label class="lesson-picker"><span>Lesson</span><select id="lessonSelect" aria-label="Choose lesson"><option value="all">All</option></select></label></header>
+<nav class="review-nav" aria-label="Saved cards"><button id="knewReviewBtn" class="review-tab knew-tab" type="button"><span>Knew</span><strong id="knewCount">0</strong></button><button id="dontReviewBtn" class="review-tab dont-tab" type="button"><span>Don't Know</span><strong id="dontCount">0</strong></button></nav>
+<section class="progress" aria-live="polite"><div class="progress-row"><span id="remainingText">0 remaining</span><span id="counterText">0 / 0</span></div><div class="progress-track"><div id="progressBar"></div></div></section>
+<section class="stage" aria-label="Flashcard"><div id="stack" class="card-stack"></div><div id="emptyState" class="empty-state hidden"><div class="empty-icon">✓</div><h2>All done!</h2><p>You reviewed every card in this list.</p><button id="restartBtn" class="restart-btn">Start again</button></div></section>
+<section class="actions" aria-label="Answer"><button id="dontKnowBtn" class="answer-btn dont" type="button"><span class="action-icon">×</span><span>Don't Know</span></button><button id="knewBtn" class="answer-btn knew" type="button"><span>Knew</span><span class="action-icon">✓</span></button></section>
+<p class="hint">Swipe left for Don't Know · swipe right for Knew</p>
+<section id="reviewPanel" class="review-panel hidden" aria-label="Saved flashcards"><div class="review-panel-head"><div><p class="eyebrow">REVIEW</p><h2 id="reviewTitle">Knew</h2></div><button id="closeReviewBtn" class="close-review" type="button" aria-label="Close review">×</button></div><div id="reviewCards" class="review-cards"></div><p id="reviewEmpty" class="review-empty hidden">No cards here yet.</p></section>
+</main>
+<script src="lesson-data-1-78.js"></script><script src="app.js"></script>
 </body>
 </html>
