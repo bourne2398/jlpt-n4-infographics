@@ -25,6 +25,10 @@
   let currentIndex = 0;
   let answered = 0;
   let drag = null;
+  const saved = {
+    knew: new Set(JSON.parse(localStorage.getItem("flashcards-knew") || "[]")),
+    dont: new Set(JSON.parse(localStorage.getItem("flashcards-dont") || "[]"))
+  };
 
   for (let lesson = 1; lesson <= 78; lesson++) {
     const option = document.createElement("option");
@@ -154,9 +158,9 @@
     active.style.opacity = "0";
 
     window.setTimeout(() => {
-      if (result === "knew") {
-        // The card is intentionally removed from the current review list.
-      }
+      const card = cards[currentIndex];
+      saved[result].add(card.id);
+      localStorage.setItem(`flashcards-${result}`, JSON.stringify([...saved[result]]));
       currentIndex++;
       answered++;
       render();
