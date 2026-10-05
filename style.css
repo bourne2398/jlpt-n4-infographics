@@ -60,3 +60,5 @@ h1{font-size:20px;line-height:1.15;margin:0;font-weight:800}
   .stage{padding-top:8px;padding-bottom:8px}
   .hint{margin-top:7px}
 }
+
+.card-face{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;backface-visibility:hidden}.card-back-face{display:none}.flashcard.flipped .card-front-face{display:none}.flashcard.flipped .card-back-face{display:flex}.back-label{font-size:10px;letter-spacing:.12em;font-weight:900;color:var(--accent);margin-bottom:12px}.flip-hint{font-size:10px;color:var(--muted);margin-top:14px;font-weight:650}.card-back-face .card-en{font-size:clamp(18px,5vw,25px);line-height:1.35;margin-top:0}
