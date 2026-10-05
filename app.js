@@ -47,7 +47,7 @@
   }
 
   function resetList() {
-    cards = sourceCards.slice();
+    cards = sourceCards.filter(card => !saved.knew.has(card.id) && !saved.dont.has(card.id));
     currentIndex = 0;
     answered = 0;
     render();
@@ -66,7 +66,9 @@
 
     remainingText.textContent = `${remaining} remaining`;
     counterText.textContent = `${Math.min(currentIndex + 1, cards.length)} / ${cards.length}`;
-    progressBar.style.width = cards.length ? `${Math.min((currentIndex / cards.length) * 100, 100)}%` : "0%";\n    knewCount.textContent = saved.knew.size;\n    dontCount.textContent = saved.dont.size;
+    progressBar.style.width = cards.length ? `${Math.min((currentIndex / cards.length) * 100, 100)}%` : "0%";
+    knewCount.textContent = saved.knew.size;
+    dontCount.textContent = saved.dont.size;
 
     if (!remaining) {
       stack.classList.add("hidden");
